@@ -15,7 +15,7 @@ function page() {
       <div className="container mx-auto">
         <div className="flex flex-col xl:flex-row gap-x-8">
           {/* text */}
-          <div className="hidden xl:flex text-center  xl:w-[30vw] flex-col lg:text-left mb-4 xl:mb-0">
+          {/* <div className="hidden xl:flex text-center  xl:w-[30vw] flex-col lg:text-left mb-4 xl:mb-0">
             <motion.h2
               variants={fadeIn("up", 0.2)}
               initial="hidden"
@@ -38,10 +38,10 @@ function page() {
               and performance, I transform complex ideas into seamless digital
               experiences that drive engagement and business success.
             </motion.p>
-          </div>
+          </div> */}
           {/* slider */}
           <motion.div
-            className="h-full xl:max-w-[65%]"
+            className="h-full w-full"
             variants={fadeIn("down", 0.4)}
             initial="hidden"
             animate="show"

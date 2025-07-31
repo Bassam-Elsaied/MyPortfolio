@@ -220,3 +220,67 @@ export const workSlides = {
     },
   ],
 };
+
+export const projects = [
+  {
+    id: 1,
+    title: "Coffe Bar",
+    description:
+      "Interactive showcase of modern web animation libraries and frameworks",
+    tech: ["Next", "GSAP", "Tailwind"],
+    image: "/images/coffee-menu-green.vercel.app.png",
+    URL: "https://coffee-menu-green.vercel.app/",
+  },
+  {
+    id: 7,
+    title: "3d Portfolio",
+    description:
+      "A sleek, space-themed personal website designed to showcase the creative and technical journey of developer",
+    tech: ["React", "Tailwind", "shadcn-ui", "TypeScript", "GSAP"],
+    image: "/images/bassam-cosmic-portfolio.vercel.app.png",
+    URL: "https://bassam-cosmic-portfolio.vercel.app/",
+  },
+  {
+    id: 2,
+    title: "X-future",
+    description:
+      "Practice for E-commerce website that provides product you can buy and pay",
+    tech: ["Next", "Tailwind", "Sanity", "Stripe", "ShadCn"],
+    image: "/images/x-future-ecommerce.vercel.app.png",
+    URL: "https://x-future-ecommerce.vercel.app/en",
+  },
+  {
+    id: 3,
+    title: "Zenty clone",
+    description: "Modern wep animated with gsap beautiful UI",
+    tech: ["React", "Tailwindcss", "GSAP"],
+    image: "/images/zentry-clone-six-tau.vercel.app.png",
+    URL: "https://zentry-clone-six-tau.vercel.app/",
+  },
+  {
+    id: 4,
+    title: "portfolio",
+    description: "Another personal website with some animation",
+    tech: ["Nextjs", "framerMotion", "Tailwindcss"],
+    image: "/images/my-portfolio-snowy-nu-82.vercel.app.png",
+    URL: "https://my-portfolio-snowy-nu-82.vercel.app/",
+  },
+  {
+    id: 5,
+    title: "Life post",
+    description:
+      "A wep that you can signin and see , share your posts with the world.",
+    tech: ["Next.js", "React", "Tailwindcss", "Sanity", "Shadcn"],
+    image: "/images/life-post.vercel.app.png",
+    URL: "https://life-post.vercel.app/",
+  },
+  {
+    id: 6,
+    title: "Pokemon Card ",
+    description:
+      "A simple and interactive website that displays custom Pokémon cards with images, types, and stats. Built using HTML, CSS, and JavaScript. Fully responsive and visually inspired by classic Pokémon card designs.",
+    tech: ["HTML", "Css", "Js"],
+    image: "/images/bassam-elsaied.github.io.png",
+    URL: "https://bassam-elsaied.github.io/Pokemon-Cards/index.html",
+  },
+];

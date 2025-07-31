@@ -7,7 +7,7 @@ import { BsArrowRight } from "react-icons/bs";
 import { motion } from "framer-motion";
 import { fadeIn } from "@/lib/variants";
 
-import React, { useReducer, useState } from "react";
+import React, { useReducer, useState, useEffect } from "react";
 import emailjs from "@emailjs/browser";
 
 const initialState = {
@@ -32,16 +32,43 @@ const formReducer = (state, action) => {
   }
 };
 
-export default function page() {
+export default function ContactPage() {
   const [formData, dispatch] = useReducer(formReducer, initialState);
   const [loading, setLoading] = useState(false);
   const [successMessage, setSuccessMessage] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
   const [isFormValid, setIsFormValid] = useState(false);
+
+  // Clear success message after 5 seconds
+  useEffect(() => {
+    if (successMessage) {
+      const timer = setTimeout(() => {
+        setSuccessMessage("");
+      }, 5000);
+      return () => clearTimeout(timer);
+    }
+  }, [successMessage]);
+
+  // Clear error message after 5 seconds
+  useEffect(() => {
+    if (errorMessage) {
+      const timer = setTimeout(() => {
+        setErrorMessage("");
+      }, 5000);
+      return () => clearTimeout(timer);
+    }
+  }, [errorMessage]);
+
+  // Update form validation whenever formData changes
+  useEffect(() => {
+    setIsFormValid(validateForm(formData));
+  }, [formData]);
 
   const validateForm = (newFormData) => {
     return (
       newFormData.name.value.trim() !== "" &&
       newFormData.email.value.includes("@") &&
+      newFormData.email.value.includes(".") &&
       newFormData.message.value.trim().length >= 10
     );
   };
@@ -49,15 +76,23 @@ export default function page() {
   const handleChange = (field, value) => {
     const updatedFormData = { ...formData, [field]: { value, error: "" } };
     dispatch({ type: "UPDATE_FIELD", field, value });
-    setIsFormValid(validateForm(updatedFormData));
+
+    // Update form validation with the new data
+    const newFormData = { ...formData, [field]: { value, error: "" } };
+    setIsFormValid(validateForm(newFormData));
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!isFormValid) return;
+
+    // Check validation again before submitting
+    if (!validateForm(formData)) {
+      setErrorMessage("Please fill all fields correctly.");
+      return;
+    }
 
     setLoading(true);
-
+    setErrorMessage(""); // Clear any previous error messages
     const templateParams = {
       from_name: formData.name.value,
       from_email: formData.email.value,
@@ -73,13 +108,12 @@ export default function page() {
       )
       .then(
         (response) => {
-          //   console.log("SUCCESS!", response.status, response.text);
           setSuccessMessage("Your message has been sent successfully!");
           dispatch({ type: "RESET" });
           setIsFormValid(false);
         },
         (error) => {
-          //   console.error("FAILED...", error);
+          setErrorMessage("Failed to send message. Please try again later.");
         }
       )
       .finally(() => setLoading(false));
@@ -113,6 +147,7 @@ export default function page() {
                   type="text"
                   placeholder="Your Name"
                   className="input"
+                  value={formData.name.value}
                   onChange={(e) => handleChange("name", e.target.value)}
                 />
                 {formData.name.error && (
@@ -151,15 +186,33 @@ export default function page() {
               )}
             </div>
             <button
-              className="btn rounded-full border border-white/50 max-w-[170px] py-8 transition-all duration-300 flex items-center justify-center overflow-hidden hover:border-accent group"
+              className={`btn rounded-full border border-white/50 max-w-[170px] py-8 transition-all duration-300 flex items-center justify-center overflow-hidden hover:border-accent group ${
+                loading ? "opacity-50 cursor-not-allowed" : ""
+              }`}
               type="submit"
-              disabled={loading || !isFormValid}
+              disabled={loading}
+              onClick={(e) => {
+                if (!validateForm(formData)) {
+                  e.preventDefault();
+                  setErrorMessage("Please fill all fields correctly.");
+                }
+              }}
             >
               {loading ? "Sending..." : "Submit"}
             </button>
             {successMessage && (
               <p className="text-green-500 text-sm mt-2">{successMessage}</p>
             )}
+            {errorMessage && (
+              <p className="text-red-500 text-sm mt-2">{errorMessage}</p>
+            )}
+            {/* Debug info - remove this in production */}
+            <div className="text-xs text-gray-400 mt-2">
+              Form valid: {isFormValid ? "Yes" : "No"} | Name:{" "}
+              {formData.name.value ? "✓" : "✗"} | Email:{" "}
+              {formData.email.value ? "✓" : "✗"} | Message:{" "}
+              {formData.message.value.length >= 10 ? "✓" : "✗"}
+            </div>
           </motion.form>
         </div>
       </div>
