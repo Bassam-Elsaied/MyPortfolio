@@ -9,10 +9,6 @@ import {
 import {
   SiNextdotjs,
   SiFramer,
-  SiAdobexd,
-  SiAdobephotoshop,
-  SiReactquery,
-  SiTypescript,
   SiSass,
   SiTailwindcss,
   SiBootstrap,
@@ -59,7 +55,7 @@ export const aboutData = [
     info: [
       {
         infos: [
-          "passionate Front-End Developer with a unique background in Philosophy. Career began as a simple curiosity for coding during my final year at university, which quickly evolved into a true passion that completely reshaped my path. Today, I focus on creating modern, responsive, and user‑friendly websites that combine clean code with thoughtful design. Turn your vision into an interactive digital experience, let’s connect!",
+          "As a Front-End Developer with a background in Philosophy, I bring a unique perspective to building modern, accessible, and intuitive web interfaces. My journey began as a personal curiosity during my university years and quickly evolved into a professional passion. Let's collaborate to transform your vision into a seamless digital experience.",
         ],
       },
     ],
@@ -70,36 +66,89 @@ export const aboutData = [
       {
         title: "Core Languages",
         icons: [
-          <FaHtml5 key="html" />,
-          <FaCss3 key="css" />,
-          <FaJs key="js" />,
+          {
+            icon: <FaHtml5 key="html" />,
+            tooltip: "HTML5 - Semantic markup and structure",
+          },
+          {
+            icon: <FaCss3 key="css" />,
+            tooltip: "CSS3 - Styling and responsive design",
+          },
+          {
+            icon: <FaJs key="js" />,
+            tooltip: "JavaScript - Dynamic functionality and interactivity",
+          },
         ],
       },
       {
         title: "Libraries ",
-        icons: [<FaReact key="react" />, <SiNextdotjs key="next" />],
+        icons: [
+          {
+            icon: <FaReact key="react" />,
+            tooltip: "React.js - Component-based UI development",
+          },
+          {
+            icon: <SiNextdotjs key="next" />,
+            tooltip: "Next.js - Full-stack React framework",
+          },
+        ],
       },
       {
         title: "UI & Styling ",
         icons: [
-          <SiFramer key="framer" />,
-          <SiSass key="sass" />,
-          <SiTailwindcss key="tailwind" />,
-          <SiBootstrap key="bootstrap" />,
-          "ShadCn",
+          {
+            icon: <SiFramer key="framer" />,
+            tooltip: "Framer Motion - Advanced animations",
+          },
+          {
+            icon: <SiSass key="sass" />,
+            tooltip: "Sass - CSS preprocessor with advanced features",
+          },
+          {
+            icon: <SiTailwindcss key="tailwind" />,
+            tooltip: "Tailwind CSS - Utility-first CSS framework",
+          },
+          {
+            icon: <SiBootstrap key="bootstrap" />,
+            tooltip: "Bootstrap - Responsive UI framework",
+          },
+          { icon: "ShadCn", tooltip: "ShadCn/ui - Modern component library" },
         ],
       },
       {
         title: "Headless CMS",
-        icons: [<SiSanity key="sanity" />],
+        icons: [
+          {
+            icon: <SiSanity key="sanity" />,
+            tooltip: "Sanity - Headless CMS for content management",
+          },
+        ],
       },
       {
         title: "Management",
-        icons: [<SiRedux key="redux" />, "Socket.io"],
+        icons: [
+          {
+            icon: <SiRedux key="redux" />,
+            tooltip: "Redux - State management for React apps",
+          },
+          {
+            icon: "Socket.io",
+            tooltip: "Socket.io - Real-time bidirectional communication",
+          },
+        ],
       },
       {
         title: "Tools",
-        icons: [<FaGitSquare key="git" />, <FaGithub key="github" />],
+        icons: [
+          {
+            icon: <FaGitSquare key="git" />,
+            tooltip: "Git - Version control system",
+          },
+          {
+            icon: <FaGithub key="github" />,
+            tooltip: "GitHub - Code hosting and collaboration",
+          },
+        ],
       },
     ],
   },

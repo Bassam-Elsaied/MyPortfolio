@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Circles from "@/components/Circles";
 import Avatar from "@/components/Avatar";
+import Tooltip from "@/components/Tooltip";
 import { motion } from "framer-motion";
 import { fadeIn } from "@/lib/variants";
 import { aboutData } from "@/lib/data";
@@ -56,9 +57,36 @@ function AboutPage() {
                   {/* Icons */}
                   {item.icons?.length > 0 && (
                     <div className="flex flex-wrap gap-4 md:text-2xl justify-center text-white/90">
-                      {item.icons.map((icon, i) => (
-                        <span key={i}> {icon}</span>
-                      ))}
+                      {item.icons.map((iconData, i) => {
+                        // Handle both new format (with tooltip) and old format (string)
+                        const icon =
+                          typeof iconData === "object" && iconData.icon
+                            ? iconData.icon
+                            : iconData;
+                        const tooltip =
+                          typeof iconData === "object" && iconData.tooltip
+                            ? iconData.tooltip
+                            : null;
+
+                        if (tooltip) {
+                          return (
+                            <Tooltip key={i} content={tooltip}>
+                              <span className="cursor-help transition-transform hover:scale-110">
+                                {icon}
+                              </span>
+                            </Tooltip>
+                          );
+                        }
+
+                        return (
+                          <span
+                            key={i}
+                            className="transition-transform hover:scale-110"
+                          >
+                            {icon}
+                          </span>
+                        );
+                      })}
                     </div>
                   )}
 
