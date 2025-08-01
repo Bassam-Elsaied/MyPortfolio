@@ -122,7 +122,7 @@ export default function ContactPage() {
   return (
     <div className="h-full bg-primary/30">
       <div className="container mx-auto py-32 text-center xl:text-left h-full flex items-center justify-center">
-        <div className="flex flex-col w-full max-w-[800px] ">
+        <div className="flex flex-col w-full max-w-[800px] p-2 ">
           <motion.h2
             variants={fadeIn("up", 0.2)}
             initial="hidden"

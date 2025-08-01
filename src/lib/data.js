@@ -59,7 +59,7 @@ export const aboutData = [
     info: [
       {
         infos: [
-          "Hey there, i'm Bassam graduated from the faculty of ART philosophy department, I didn't find myself in this field when I was in college , last year in college, I learned Python just for fun and I found myself. found my passion in programming, when you love something you're gonna be great at it, I love coding and I do love learning, so i decided to dive more into this field, took a lot of courses, and decided to be a Front-End web developer.",
+          "passionate Front-End Developer with a unique background in Philosophy. Career began as a simple curiosity for coding during my final year at university, which quickly evolved into a true passion that completely reshaped my path. Today, I focus on creating modern, responsive, and user‑friendly websites that combine clean code with thoughtful design. Turn your vision into an interactive digital experience, let’s connect!",
         ],
       },
     ],
@@ -105,32 +105,10 @@ export const aboutData = [
   },
 
   {
-    title: "personal-information",
-    info: [
-      {
-        title: "Name:",
-        stage: "Bassam Elsayed Hassan",
-      },
-
-      {
-        title: "Residence: ",
-        stage: "Egypt/tanta",
-      },
-      {
-        title: "Email: ",
-        stage: "Bassame993@gmail.com",
-      },
-      {
-        title: "Phone: ",
-        stage: "+201065223412",
-      },
-    ],
-  },
-  {
     title: "Experience",
     info: [
       {
-        title: "ENS",
+        title: "ENS - Front-End Developer",
         stage: "2024 - Present",
         infos: [
           "I worked as a Front-End developer at ENS for 1 year, where I was responsible for developing and maintaining the company's website and web applications. I worked with a team of developers to create user-friendly interfaces and ensure that the website was responsive and accessible on all devices.",
@@ -257,14 +235,7 @@ export const projects = [
     image: "/images/zentry-clone-six-tau.vercel.app.png",
     URL: "https://zentry-clone-six-tau.vercel.app/",
   },
-  {
-    id: 4,
-    title: "portfolio",
-    description: "Another personal website with some animation",
-    tech: ["Nextjs", "framerMotion", "Tailwindcss"],
-    image: "/images/my-portfolio-snowy-nu-82.vercel.app.png",
-    URL: "https://my-portfolio-snowy-nu-82.vercel.app/",
-  },
+
   {
     id: 5,
     title: "Life post",

@@ -6,6 +6,7 @@ import {
   RiLinkedinLine,
   RiFacebookLine,
   RiInstagramLine,
+  RiMailSendLine,
 } from "react-icons/ri";
 
 function Socials() {
@@ -23,6 +24,12 @@ function Socials() {
         className="hover:text-accent transition-all duration-300"
       >
         <RiLinkedinLine />
+      </Link>
+      <Link
+        href={"mailto:Bassame993@gmail.com"}
+        className="hover:text-accent transition-all duration-300"
+      >
+        <RiMailSendLine />
       </Link>
     </div>
   );
