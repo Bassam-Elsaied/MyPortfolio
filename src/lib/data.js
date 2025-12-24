@@ -262,7 +262,7 @@ export const projects = [
     id: 7,
     title: "3d Portfolio",
     description:
-      "A sleek, space-themed personal website designed to showcase the creative and technical journey of developer",
+      "A sleek, space-themed personal website designed to showcase the creative and technical journey ",
     tech: ["React", "Tailwind", "shadcn-ui", "TypeScript", "GSAP"],
     image: "/images/bassam-cosmic-portfolio.vercel.app.png",
     URL: "https://bassam-cosmic-portfolio.vercel.app/",
@@ -298,7 +298,7 @@ export const projects = [
     id: 6,
     title: "Pokemon Card ",
     description:
-      "A simple and interactive website that displays custom Pokémon cards with images, types, and stats. Built using HTML, CSS, and JavaScript. Fully responsive and visually inspired by classic Pokémon card designs.",
+      "A simple and interactive website that displays custom Pokémon cards with images, types, and stats. Built using HTML, CSS, and JavaScript. ",
     tech: ["HTML", "Css", "Js"],
     image: "/images/bassam-elsaied.github.io.png",
     URL: "https://bassam-elsaied.github.io/Pokemon-Cards/index.html",

@@ -35,7 +35,7 @@ export default function Home() {
             Dedication, Quick Learning, and Collaborative Spirit.
           </motion.p>
           {/* button */}
-          <div className="flex justify-center xl:hidden relative ">
+          <div className="flex justify-center xl:hidden relative  ">
             <ProjectsBtn />
           </div>
           <motion.div

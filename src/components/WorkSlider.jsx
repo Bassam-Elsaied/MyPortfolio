@@ -23,9 +23,10 @@ function WorkSlider() {
       spaceBetween={20}
       pagination={{
         clickable: true,
+        dynamicBullets: true,
       }}
       modules={[Pagination]}
-      className="h-[350px] sm:h-[400px] md:h-[500px]"
+      className="h-auto sm:h-[500px] work-slider pb-12 relative"
       breakpoints={{
         640: {
           slidesPerView: 1,
@@ -43,8 +44,8 @@ function WorkSlider() {
     >
       {projects.map((project, index) => {
         return (
-          <SwiperSlide key={index}>
-            <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-4 sm:p-6 group cursor-pointer hover:bg-white/10 transition-all duration-300 h-full flex flex-col">
+          <SwiperSlide key={index} className="h-auto p-2 md:p-0">
+            <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-4  group cursor-pointer hover:bg-white/10 transition-all duration-300 h-auto sm:h-full flex flex-col">
               <div className="relative overflow-hidden rounded-lg mb-4 flex-shrink-0">
                 <img
                   src={project.image}
@@ -58,7 +59,7 @@ function WorkSlider() {
                 <h3 className="text-lg sm:text-xl font-bold mb-2 sm:mb-3 text-white group-hover:text-[var(--color-accent)] transition-colors duration-300">
                   {project.title}
                 </h3>
-                <p className="text-white/60 mb-3 sm:mb-4 text-xs sm:text-sm leading-relaxed flex-1">
+                <p className="text-white/60 mb-3 sm:mb-4 text-xs sm:text-sm leading-relaxed sm:flex-1 line-clamp-3 sm:line-clamp-none">
                   {project.description}
                 </p>
 
