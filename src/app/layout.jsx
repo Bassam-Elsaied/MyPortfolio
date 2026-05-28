@@ -19,7 +19,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body
-        className={`${sora.variable}  antialiased page bg-site text-white bg-no-repeat bg-cover relative font-sora`}
+        className={`${sora.variable} antialiased page bg-primary bg-site text-white relative font-sora`}
       >
         <TopLeftImage />
         <Nav />

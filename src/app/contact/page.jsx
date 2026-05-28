@@ -39,6 +39,16 @@ export default function ContactPage() {
   const [errorMessage, setErrorMessage] = useState("");
   const [isFormValid, setIsFormValid] = useState(false);
 
+  const serviceId = process.env.NEXT_PUBLIC_SERVICE_ID?.trim();
+  const templateId = process.env.NEXT_PUBLIC_TEMPLATE_ID?.trim();
+  const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY?.trim();
+
+  useEffect(() => {
+    if (publicKey) {
+      emailjs.init({ publicKey });
+    }
+  }, [publicKey]);
+
   // Clear success message after 5 seconds
   useEffect(() => {
     if (successMessage) {
@@ -85,44 +95,66 @@ export default function ContactPage() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // Check validation again before submitting
     if (!validateForm(formData)) {
       setErrorMessage("Please fill all fields correctly.");
       return;
     }
 
+    if (!serviceId || !templateId || !publicKey) {
+      setErrorMessage(
+        "Email service is not configured. Add your EmailJS keys to .env"
+      );
+      return;
+    }
+
     setLoading(true);
-    setErrorMessage(""); // Clear any previous error messages
+    setErrorMessage("");
+
+    const name = formData.name.value.trim();
+    const email = formData.email.value.trim().toLowerCase();
+    const message = formData.message.value.trim();
+
     const templateParams = {
-      from_name: formData.name.value,
-      from_email: formData.email.value,
-      message: formData.message.value,
+      from_name: name,
+      user_name: name,
+      name,
+      from_email: email,
+      user_email: email,
+      email,
+      reply_to: email,
+      message,
+      user_message: message,
     };
 
-    emailjs
-      .send(
-        process.env.NEXT_PUBLIC_SERVICE_ID,
-        process.env.NEXT_PUBLIC_TEMPLATE_ID,
-        templateParams,
-        process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY
-      )
-      .then(
-        (response) => {
-          setSuccessMessage("Your message has been sent successfully!");
-          dispatch({ type: "RESET" });
-          setIsFormValid(false);
-        },
-        (error) => {
-          setErrorMessage("Failed to send message. Please try again later.");
-        }
-      )
-      .finally(() => setLoading(false));
+    try {
+      await emailjs.send(serviceId, templateId, templateParams, { publicKey });
+      setSuccessMessage("Your message has been sent successfully!");
+      dispatch({ type: "RESET" });
+      setIsFormValid(false);
+    } catch (error) {
+      const detail = error?.text || error?.message || "Unknown error";
+      console.error("EmailJS error:", detail);
+
+      if (
+        detail.includes("Invalid grant") ||
+        detail.includes("insufficient authentication") ||
+        detail.includes("412")
+      ) {
+        setErrorMessage(
+          "Gmail connection expired. Reconnect your email in the EmailJS dashboard."
+        );
+      } else {
+        setErrorMessage("Failed to send message. Please try again later.");
+      }
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
-    <div className="h-full bg-primary/30">
-      <div className="container mx-auto py-32 text-center xl:text-left h-full flex items-center justify-center">
-        <div className="flex flex-col w-full max-w-[800px] p-2 ">
+    <div className="flex h-dvh flex-col overflow-hidden bg-primary/30">
+      <div className="container mx-auto flex flex-1 items-center justify-center px-4 pb-28 pt-28 text-center xl:text-left">
+        <div className="flex w-full max-w-[800px] flex-col p-2">
           <motion.h2
             variants={fadeIn("up", 0.2)}
             initial="hidden"
@@ -206,13 +238,6 @@ export default function ContactPage() {
             {errorMessage && (
               <p className="text-red-500 text-sm mt-2">{errorMessage}</p>
             )}
-            {/* Debug info - remove this in production */}
-            <div className="text-xs text-gray-400 mt-2">
-              Form valid: {isFormValid ? "Yes" : "No"} | Name:{" "}
-              {formData.name.value ? "✓" : "✗"} | Email:{" "}
-              {formData.email.value ? "✓" : "✗"} | Message:{" "}
-              {formData.message.value.length >= 10 ? "✓" : "✗"}
-            </div>
           </motion.form>
         </div>
       </div>

@@ -12,7 +12,7 @@ function AboutPage() {
   const [index, setIndex] = useState(0);
 
   return (
-    <div className=" bg-primary/30 py-20 md:py-32 text-center xl:text-left h-full ">
+    <div className="page-scroll relative bg-primary/30 py-20 pb-28 text-center md:py-32 xl:text-left" data-scroll-container>
       <Circles />
       <motion.div
         className="hidden xl:flex absolute bottom-0 -left-[319px] mix-blend-color-dodge"
@@ -25,7 +25,7 @@ function AboutPage() {
       </motion.div>
 
       <div className="container mt-5 mx-auto flex flex-col justify-center items-center xl:flex-row gap-x-4 px-4  ">
-        <div className="flex flex-col w-full xl:max-w-[750px] h-full">
+        <div className="flex flex-col w-full xl:max-w-[750px] min-h-0 xl:h-full">
           {/* Tabs */}
           <div className="flex justify-center xl:justify-start gap-x-4 xl:gap-x-8 mb-2 flex-wrap z-50">
             {aboutData.map((item, itemIndex) => (
@@ -46,11 +46,11 @@ function AboutPage() {
           </div>
 
           {/* Tab Content */}
-          <div className="py-6 flex flex-col md:gap-y-6 items-center h-full">
+          <div className="flex w-full flex-col items-center gap-y-8 py-6 md:gap-y-6">
             {aboutData[index].info.map((item, itemIndex) => (
               <div key={itemIndex} className="w-full  ">
-                <div className="flex flex-col md:flex-row md:items-center  gap-2 md:gap-4">
-                  <div className="md:text-lg text-medium font-semibold text-white">
+                <div className="flex flex-col md:flex-row md:items-center gap-2 md:gap-4">
+                  <div className="md:text-lg text-base font-semibold text-white">
                     {item.title}
                   </div>
 
@@ -101,7 +101,7 @@ function AboutPage() {
                     {item.infos.map((info, i) => (
                       <div
                         key={i}
-                        className="leading-relaxed text-sm md:text-xl"
+                        className="leading-relaxed text-sm md:text-base"
                       >
                         {info}
                       </div>
