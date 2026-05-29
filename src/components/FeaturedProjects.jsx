@@ -134,15 +134,9 @@ function FeaturedProjects() {
         </p>
       </motion.div>
 
-      <motion.div
-        variants={fadeIn("up", 0.3)}
-        initial="hidden"
-        animate="show"
-        exit="hidden"
-        className="mb-5 sm:mb-6"
-      >
+      <div className="mb-5 sm:mb-6">
         <FeaturedCard project={mainProject} featured />
-      </motion.div>
+      </div>
 
       <motion.div
         variants={fadeIn("up", 0.4)}

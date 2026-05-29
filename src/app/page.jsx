@@ -57,7 +57,7 @@ export default function Home() {
 
       {/* avatar */}
       <motion.div
-        className="w-full h-full max-w-[450px] max-h-[450px] absolute -bottom-32 lg:bottom-0 lg:right-0"
+        className="absolute bottom-0 -right-25 w-auto h-auto max-w-[950px] max-h-[950px]"
         variants={fadeIn("up", 0.5)}
         transition={{ duration: 1, ease: "easeInOut" }}
         initial="hidden"

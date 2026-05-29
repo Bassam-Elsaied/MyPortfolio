@@ -2,116 +2,75 @@
 
 import { useState } from "react";
 import Circles from "@/components/Circles";
-import Avatar from "@/components/Avatar";
-import Tooltip from "@/components/Tooltip";
-import { motion } from "framer-motion";
+import AboutTabPanel from "@/components/AboutContent";
+import { motion, AnimatePresence } from "framer-motion";
 import { fadeIn } from "@/lib/variants";
 import { aboutData } from "@/lib/data";
+import Bulb from "@/components/Bulb";
 
 function AboutPage() {
   const [index, setIndex] = useState(0);
 
   return (
-    <div className="page-scroll relative bg-primary/30 py-20 pb-28 text-center md:py-32 xl:text-left" data-scroll-container>
+    <div
+      className="page-scroll relative bg-primary/30 pt-28 pb-28 text-center md:pt-36 md:pb-32 xl:text-left"
+      data-scroll-container
+    >
       <Circles />
+
       <motion.div
-        className="hidden xl:flex absolute bottom-0 -left-[319px] mix-blend-color-dodge"
+        className="pointer-events-none absolute bottom-0 -left-[319px] z-10 hidden mix-blend-color-dodge xl:block"
         variants={fadeIn("right", 0.2)}
         initial="hidden"
         animate="show"
         exit="hidden"
       >
-        <Avatar />
+        <Bulb />
       </motion.div>
 
-      <div className="container mt-5 mx-auto flex flex-col justify-center items-center xl:flex-row gap-x-4 px-4  ">
-        <div className="flex flex-col w-full xl:max-w-[750px] min-h-0 xl:h-full">
-          {/* Tabs */}
-          <div className="flex justify-center xl:justify-start gap-x-4 xl:gap-x-8 mb-2 flex-wrap z-50">
-            {aboutData.map((item, itemIndex) => (
-              <div
-                key={itemIndex}
-                onClick={() => setIndex(itemIndex)}
-                className={`cursor-pointer mb-2 capitalize xl:text-lg relative after:h-[2px] after:absolute after:left-0 after:-bottom-1 transition-all
-                  ${
-                    index === itemIndex
-                      ? "text-accent after:w-full after:bg-accent"
-                      : "text-white/70 hover:text-accent after:w-8 after:bg-white/50"
-                  }
-                `}
-              >
-                {item.title}
-              </div>
-            ))}
-          </div>
+      <div className="container relative z-20 mx-auto max-w-4xl px-4 xl:max-w-6xl">
+        <motion.header
+          variants={fadeIn("up", 0.2)}
+          initial="hidden"
+          animate="show"
+          exit="hidden"
+          className="mb-6 flex flex-col gap-3 text-center sm:mb-8 xl:text-left"
+        >
+          <h2 className="section-title mb-0">
+            About me <span className="text-accent">.</span>
+          </h2>
+          <p className="mx-auto max-w-2xl text-sm leading-relaxed text-white/60 sm:text-base xl:mx-0">
+            Full-Stack Developer — building modern web apps from UI to APIs.
+          </p>
+        </motion.header>
 
-          {/* Tab Content */}
-          <div className="flex w-full flex-col items-center gap-y-8 py-6 md:gap-y-6">
-            {aboutData[index].info.map((item, itemIndex) => (
-              <div key={itemIndex} className="w-full  ">
-                <div className="flex flex-col md:flex-row md:items-center gap-2 md:gap-4">
-                  <div className="md:text-lg text-base font-semibold text-white">
-                    {item.title}
-                  </div>
+        <motion.nav
+          variants={fadeIn("up", 0.3)}
+          initial="hidden"
+          animate="show"
+          exit="hidden"
+          className="mb-6 flex flex-wrap justify-center gap-2 sm:mb-8 xl:justify-start"
+          aria-label="About sections"
+        >
+          {aboutData.map((item, itemIndex) => (
+            <button
+              key={item.title}
+              type="button"
+              onClick={() => setIndex(itemIndex)}
+              className={`rounded-full border px-4 py-2 text-sm capitalize transition-all duration-300 sm:px-5 sm:text-base ${
+                index === itemIndex
+                  ? "border-accent bg-accent/15 text-accent"
+                  : "border-white/15 bg-white/5 text-white/70 hover:border-white/30 hover:text-white"
+              }`}
+            >
+              {item.title.replace(/-/g, " ")}
+            </button>
+          ))}
+        </motion.nav>
 
-                  {/* Icons */}
-                  {item.icons?.length > 0 && (
-                    <div className="flex flex-wrap gap-4 md:text-2xl justify-center text-white/90">
-                      {item.icons.map((iconData, i) => {
-                        // Handle both new format (with tooltip) and old format (string)
-                        const icon =
-                          typeof iconData === "object" && iconData.icon
-                            ? iconData.icon
-                            : iconData;
-                        const tooltip =
-                          typeof iconData === "object" && iconData.tooltip
-                            ? iconData.tooltip
-                            : null;
-
-                        if (tooltip) {
-                          return (
-                            <Tooltip key={i} content={tooltip}>
-                              <span className="cursor-help transition-transform hover:scale-110">
-                                {icon}
-                              </span>
-                            </Tooltip>
-                          );
-                        }
-
-                        return (
-                          <span
-                            key={i}
-                            className="transition-transform hover:scale-110"
-                          >
-                            {icon}
-                          </span>
-                        );
-                      })}
-                    </div>
-                  )}
-
-                  <div className="text-medium text-accent font-medium ">
-                    {item.stage}
-                  </div>
-                </div>
-
-                {/* Infos */}
-                {item.infos?.length > 0 && (
-                  <div className="mt-1 flex flex-col gap-2 text-white/80 text-sm break-words max-w-full bg-white/5 p-4 rounded-xl shadow-lg border border-white/10 backdrop-blur-sm overflow-hidden ">
-                    {item.infos.map((info, i) => (
-                      <div
-                        key={i}
-                        className="leading-relaxed text-sm md:text-base"
-                      >
-                        {info}
-                      </div>
-                    ))}
-                  </div>
-                )}
-              </div>
-            ))}
-          </div>
-        </div>
+        <AnimatePresence mode="wait">
+          <AboutTabPanel key={index} tabIndex={index} />
+        </AnimatePresence>
       </div>
     </div>
   );

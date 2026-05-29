@@ -1,6 +1,6 @@
 # Bassam's Portfolio 🚀
 
-A modern, interactive portfolio website built with Next.js, showcasing my journey as a self-taught Frontend Developer with a unique background in Philosophy.
+A modern, interactive portfolio website built with Next.js, showcasing my journey as a Full-Stack Developer.
 
 ## ✨ Features
 

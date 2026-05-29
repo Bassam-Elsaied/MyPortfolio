@@ -17,6 +17,9 @@ import {
   SiNodedotjs,
   SiExpress,
   SiMongodb,
+  SiSupabase,
+  SiSocketdotio,
+  SiShadcnui,
 } from "react-icons/si";
 
 import {
@@ -28,6 +31,7 @@ import {
   FaFigma,
   FaGitSquare,
   FaGithub,
+  FaDatabase,
 } from "react-icons/fa";
 
 // icons
@@ -58,7 +62,7 @@ export const aboutData = [
     info: [
       {
         infos: [
-          "As a Full-Stack Developer with 3 years of front-end experience and 1 year of back-end experience, I build complete web solutions from intuitive user interfaces to robust server-side logic. With a background in Philosophy, I bring a unique perspective to creating modern, accessible, and scalable applications. Let's collaborate to transform your vision into a seamless digital experience.",
+          "As a Full-Stack Developer with 3 years of front-end experience and 1 year of back-end experience, I build complete web solutions from intuitive user interfaces to robust server-side logic. I focus on creating modern, accessible, and scalable applications. Let's collaborate to transform your vision into a seamless digital experience.",
         ],
       },
     ],
@@ -71,15 +75,15 @@ export const aboutData = [
         icons: [
           {
             icon: <FaHtml5 key="html" />,
-            tooltip: "HTML5 - Semantic markup and structure",
+            tooltip: "HTML5 ",
           },
           {
             icon: <FaCss3 key="css" />,
-            tooltip: "CSS3 - Styling and responsive design",
+            tooltip: "CSS3 ",
           },
           {
             icon: <FaJs key="js" />,
-            tooltip: "JavaScript - Dynamic functionality and interactivity",
+            tooltip: "JavaScript ",
           },
         ],
       },
@@ -88,11 +92,11 @@ export const aboutData = [
         icons: [
           {
             icon: <FaReact key="react" />,
-            tooltip: "React.js - Component-based UI development",
+            tooltip: "React.js ",
           },
           {
             icon: <SiNextdotjs key="next" />,
-            tooltip: "Next.js - Full-stack React framework",
+            tooltip: "Next.js ",
           },
         ],
       },
@@ -101,21 +105,24 @@ export const aboutData = [
         icons: [
           {
             icon: <SiFramer key="framer" />,
-            tooltip: "Framer Motion - Advanced animations",
+            tooltip: "Framer Motion ",
           },
           {
             icon: <SiSass key="sass" />,
-            tooltip: "Sass - CSS preprocessor with advanced features",
+            tooltip: "Sass ",
           },
           {
             icon: <SiTailwindcss key="tailwind" />,
-            tooltip: "Tailwind CSS - Utility-first CSS framework",
+            tooltip: "Tailwind CSS ",
           },
           {
             icon: <SiBootstrap key="bootstrap" />,
-            tooltip: "Bootstrap - Responsive UI framework",
+            tooltip: "Bootstrap ",
           },
-          { icon: "ShadCn", tooltip: "ShadCn/ui - Modern component library" },
+          {
+            icon: <SiShadcnui key="shadcn" />,
+            tooltip: "ShadCn/ui ",
+          },
         ],
       },
       {
@@ -123,19 +130,23 @@ export const aboutData = [
         icons: [
           {
             icon: <SiNodedotjs key="node" />,
-            tooltip: "Node.js - JavaScript runtime for server-side development",
+            tooltip: "Node.js ",
           },
           {
             icon: <SiExpress key="express" />,
-            tooltip: "Express.js - Web framework for Node.js APIs",
+            tooltip: "Express.js ",
           },
           {
-            icon: "SQL Server",
-            tooltip: "SQL Server - Relational database management",
+            icon: <FaDatabase key="sqlserver" />,
+            tooltip: "SQL Server ",
           },
           {
             icon: <SiMongodb key="mongodb" />,
-            tooltip: "MongoDB - NoSQL document database",
+            tooltip: "MongoDB ",
+          },
+          {
+            icon: <SiSupabase key="supabase" />,
+            tooltip: "Supabase - Backend as a service with PostgreSQL",
           },
         ],
       },
@@ -144,7 +155,7 @@ export const aboutData = [
         icons: [
           {
             icon: <SiSanity key="sanity" />,
-            tooltip: "Sanity - Headless CMS for content management",
+            tooltip: "Sanity ",
           },
         ],
       },
@@ -153,11 +164,11 @@ export const aboutData = [
         icons: [
           {
             icon: <SiRedux key="redux" />,
-            tooltip: "Redux - State management for React apps",
+            tooltip: "Redux ",
           },
           {
-            icon: "Socket.io",
-            tooltip: "Socket.io - Real-time bidirectional communication",
+            icon: <SiSocketdotio key="socketio" />,
+            tooltip: "Socket.io ",
           },
         ],
       },
@@ -166,11 +177,11 @@ export const aboutData = [
         icons: [
           {
             icon: <FaGitSquare key="git" />,
-            tooltip: "Git - Version control system",
+            tooltip: "Git ",
           },
           {
             icon: <FaGithub key="github" />,
-            tooltip: "GitHub - Code hosting and collaboration",
+            tooltip: "GitHub ",
           },
         ],
       },
@@ -184,14 +195,14 @@ export const aboutData = [
         title: "ENS - Full-Stack Developer",
         stage: "2024 - Present",
         infos: [
-          "Working as a Full-Stack Developer at ENS, building and maintaining the company's website and web applications. On the front end, I create responsive and accessible user interfaces with React and Next.js. On the back end, I develop REST APIs with Node.js and Express, and work with SQL Server Or MongoDB .",
+          "Working as a Full-Stack Developer at ENS, building and maintaining the company's website and web applications. On the front end, I create responsive and accessible user interfaces with React and Next.js. On the back end, I develop REST APIs with Node.js and Express, and work with SQL Server, MongoDB, and Supabase.",
         ],
       },
       {
         title: "Freelance - Full-Stack Developer",
         stage: "2025 - Present",
         infos: [
-          "Working independently as a freelance Full-Stack Developer for 1 year, delivering custom web applications for clients. I handle the full project lifecycle — from UI design and front-end development with React and Next.js to back-end APIs with Node.js and Express, and database setup with SQL Server Or MongoDB.",
+          "Working independently as a freelance Full-Stack Developer for 1 year, delivering custom web applications for clients. I handle the full project lifecycle — from UI design and front-end development with React and Next.js to back-end APIs with Node.js and Express, and database setup with SQL Server, MongoDB, and Supabase.",
         ],
       },
     ],
@@ -200,34 +211,25 @@ export const aboutData = [
 
 export const serviceData = [
   {
-    icon: <RxCrop />,
-    title: "Adaptable",
+    icon: <RxDesktop />,
+    title: "Full-Stack Development",
     description:
-      "Adaptable under pressure: Demonstrated strength in quickly adapting to new technologies ",
+      "End-to-end web applications — responsive front ends with React & Next.js, REST APIs with Node.js & Express, and database design with SQL Server, MongoDB, and Supabase.",
+    tags: ["React", "Next.js", "Node.js", "Express", "Supabase"],
   },
   {
     icon: <RxPencil2 />,
-    title: "Technical",
+    title: "Front-End Development",
     description:
-      "Technical expertise: 3 years in front-end (React.js, Next.js) and 1 year in back-end (Node.js, Express, SQL Server, MongoDB).",
+      "Modern, accessible interfaces with React, Next.js, Tailwind CSS, and smooth animations. 3+ years building fast, user-focused experiences.",
+    tags: ["React", "Next.js", "Tailwind", "Framer Motion"],
   },
   {
-    icon: <RxDesktop />,
-    title: "Development",
+    icon: <RxCrop />,
+    title: "Back-End & APIs",
     description:
-      "Full-stack development: Building end-to-end web solutions — from polished user interfaces to reliable APIs and database design.",
-  },
-  {
-    icon: <RxReader />,
-    title: "Versatility",
-    description:
-      "Versatility in tools: Well-versed in using Git & GitHub for version control, ensuring collaborative ",
-  },
-  {
-    icon: <RxRocket />,
-    title: "Learning",
-    description:
-      "Continuous learning: Committed to staying abreast of industry trends and enhancing skills through  online courses .",
+      "Scalable server-side logic, authentication, and database integration. Experience with Node.js, Express, SQL Server, MongoDB, and Supabase.",
+    tags: ["Node.js", "Express", "Supabase", "MongoDB"],
   },
 ];
 
