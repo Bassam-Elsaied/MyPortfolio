@@ -3,7 +3,7 @@
 import CircularText from "@/components/CircularText";
 import { HiArrowDownTray } from "react-icons/hi2";
 
-const CV_PATH = "/Bassm-elsayed-frontEnd.pdf";
+const CV_PATH = "/Bassam_Elsayed_CV.pdf";
 const CV_FILENAME = "Bassam-Elsayed-CV.pdf";
 
 function ProjectsBtn() {

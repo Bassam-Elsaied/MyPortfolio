@@ -192,10 +192,12 @@ export const aboutData = [
     title: "Experience",
     info: [
       {
-        title: "ENS - Full-Stack Developer",
+        title: "ENS — Team Leader",
         stage: "2024 - Present",
         infos: [
-          "Working as a Full-Stack Developer at ENS, building and maintaining the company's website and web applications. On the front end, I create responsive and accessible user interfaces with React and Next.js. On the back end, I develop REST APIs with Node.js and Express, and work with SQL Server, MongoDB, and Supabase.",
+          "Started at ENS as a Junior Front-End Developer, building responsive and accessible user interfaces with React and Next.js.",
+          "Promoted to Full-Stack Developer — developing REST APIs with Node.js and Express, and working with SQL Server, MongoDB, and Supabase.",
+          "Currently Team Leader, leading the development team and overseeing company web applications including ENSmenu.",
         ],
       },
       {
@@ -376,3 +378,10 @@ export const projects = [
     URL: "https://bassam-elsaied.github.io/Pokemon-Cards/index.html",
   },
 ];
+
+export const contactInfo = {
+  email: "Bassame993@gmail.com",
+  location: "Egypt",
+  responseTime: "Within 24 hours",
+  availability: "Available for freelance & full-time",
+};

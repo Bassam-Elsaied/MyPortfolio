@@ -1,244 +1,122 @@
 "use client";
 
-//icons
-import { BsArrowRight } from "react-icons/bs";
-
-//framer
-import { motion } from "framer-motion";
+import Bulb from "@/components/Bulb";
+import Circles from "@/components/Circles";
+import ContactForm from "@/components/ContactForm";
+import Socials from "@/components/Socials";
+import { contactInfo } from "@/lib/data";
 import { fadeIn } from "@/lib/variants";
+import { motion } from "framer-motion";
+import { RiMailLine, RiMapPinLine, RiTimeLine } from "react-icons/ri";
 
-import React, { useReducer, useState, useEffect } from "react";
-import emailjs from "@emailjs/browser";
-
-const initialState = {
-  name: { value: "", error: "" },
-  email: { value: "", error: "" },
-  message: { value: "", error: "" },
-};
-
-const formReducer = (state, action) => {
-  switch (action.type) {
-    case "UPDATE_FIELD":
-      return { ...state, [action.field]: { value: action.value, error: "" } };
-    case "SET_ERROR":
-      return {
-        ...state,
-        [action.field]: { ...state[action.field], error: action.error },
-      };
-    case "RESET":
-      return initialState;
-    default:
-      return state;
-  }
-};
+const contactCards = [
+  {
+    icon: RiMailLine,
+    label: "Email",
+    value: contactInfo.email,
+    href: `mailto:${contactInfo.email}`,
+  },
+  {
+    icon: RiMapPinLine,
+    label: "Location",
+    value: contactInfo.location,
+  },
+  {
+    icon: RiTimeLine,
+    label: "Response time",
+    value: contactInfo.responseTime,
+  },
+];
 
 export default function ContactPage() {
-  const [formData, dispatch] = useReducer(formReducer, initialState);
-  const [loading, setLoading] = useState(false);
-  const [successMessage, setSuccessMessage] = useState("");
-  const [errorMessage, setErrorMessage] = useState("");
-  const [isFormValid, setIsFormValid] = useState(false);
-
-  const serviceId = process.env.NEXT_PUBLIC_SERVICE_ID?.trim();
-  const templateId = process.env.NEXT_PUBLIC_TEMPLATE_ID?.trim();
-  const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY?.trim();
-
-  useEffect(() => {
-    if (publicKey) {
-      emailjs.init({ publicKey });
-    }
-  }, [publicKey]);
-
-  // Clear success message after 5 seconds
-  useEffect(() => {
-    if (successMessage) {
-      const timer = setTimeout(() => {
-        setSuccessMessage("");
-      }, 5000);
-      return () => clearTimeout(timer);
-    }
-  }, [successMessage]);
-
-  // Clear error message after 5 seconds
-  useEffect(() => {
-    if (errorMessage) {
-      const timer = setTimeout(() => {
-        setErrorMessage("");
-      }, 5000);
-      return () => clearTimeout(timer);
-    }
-  }, [errorMessage]);
-
-  // Update form validation whenever formData changes
-  useEffect(() => {
-    setIsFormValid(validateForm(formData));
-  }, [formData]);
-
-  const validateForm = (newFormData) => {
-    return (
-      newFormData.name.value.trim() !== "" &&
-      newFormData.email.value.includes("@") &&
-      newFormData.email.value.includes(".") &&
-      newFormData.message.value.trim().length >= 10
-    );
-  };
-
-  const handleChange = (field, value) => {
-    const updatedFormData = { ...formData, [field]: { value, error: "" } };
-    dispatch({ type: "UPDATE_FIELD", field, value });
-
-    // Update form validation with the new data
-    const newFormData = { ...formData, [field]: { value, error: "" } };
-    setIsFormValid(validateForm(newFormData));
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-
-    if (!validateForm(formData)) {
-      setErrorMessage("Please fill all fields correctly.");
-      return;
-    }
-
-    if (!serviceId || !templateId || !publicKey) {
-      setErrorMessage(
-        "Email service is not configured. Add your EmailJS keys to .env"
-      );
-      return;
-    }
-
-    setLoading(true);
-    setErrorMessage("");
-
-    const name = formData.name.value.trim();
-    const email = formData.email.value.trim().toLowerCase();
-    const message = formData.message.value.trim();
-
-    const templateParams = {
-      from_name: name,
-      user_name: name,
-      name,
-      from_email: email,
-      user_email: email,
-      email,
-      reply_to: email,
-      message,
-      user_message: message,
-    };
-
-    try {
-      await emailjs.send(serviceId, templateId, templateParams, { publicKey });
-      setSuccessMessage("Your message has been sent successfully!");
-      dispatch({ type: "RESET" });
-      setIsFormValid(false);
-    } catch (error) {
-      const detail = error?.text || error?.message || "Unknown error";
-      console.error("EmailJS error:", detail);
-
-      if (
-        detail.includes("Invalid grant") ||
-        detail.includes("insufficient authentication") ||
-        detail.includes("412")
-      ) {
-        setErrorMessage(
-          "Gmail connection expired. Reconnect your email in the EmailJS dashboard."
-        );
-      } else {
-        setErrorMessage("Failed to send message. Please try again later.");
-      }
-    } finally {
-      setLoading(false);
-    }
-  };
-
   return (
-    <div className="flex h-dvh flex-col overflow-hidden bg-primary/30">
-      <div className="container mx-auto flex flex-1 items-center justify-center px-4 pb-28 pt-28 text-center xl:text-left">
-        <div className="flex w-full max-w-[800px] flex-col p-2">
-          <motion.h2
-            variants={fadeIn("up", 0.2)}
+    <div
+      className="page-scroll relative bg-primary/30 pt-28 pb-28 md:pt-36 md:pb-32"
+      data-scroll-container
+    >
+      <Circles />
+
+      <div className="pointer-events-none hidden md:block">
+        <Bulb />
+      </div>
+
+      <div className="container relative z-20 mx-auto max-w-6xl px-4">
+        <motion.header
+          variants={fadeIn("up", 0.2)}
+          initial="hidden"
+          animate="show"
+          exit="hidden"
+          className="mb-8 flex flex-col gap-3 text-center sm:mb-10 xl:text-left"
+        >
+          <h2 className="section-title mb-0">
+            Let&apos;s connect <span className="text-accent">.</span>
+          </h2>
+          <p className="mx-auto max-w-2xl text-sm leading-relaxed text-white/60 sm:text-base xl:mx-0">
+            Have a project in mind or want to collaborate? Send a message and
+            I&apos;ll get back to you as soon as possible.
+          </p>
+        </motion.header>
+
+        <div className="grid grid-cols-1 items-start gap-10 lg:grid-cols-2 lg:gap-16">
+          <motion.div
+            variants={fadeIn("up", 0.3)}
             initial="hidden"
             animate="show"
             exit="hidden"
-            className="h2"
+            className="flex flex-col gap-6 text-center xl:text-left"
           >
-            Let&apos;s <span>connect.</span>
-          </motion.h2>
+            <span className="mx-auto inline-flex w-fit items-center gap-2 rounded-full border border-accent/30 bg-accent/10 px-4 py-1.5 text-xs font-medium text-accent xl:mx-0">
+              <span className="h-2 w-2 animate-pulse rounded-full bg-accent" />
+              {contactInfo.availability}
+            </span>
 
-          <motion.form
+            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-1">
+              {contactCards.map(({ icon: Icon, label, value, href }) => (
+                <div
+                  key={label}
+                  className="flex items-start gap-4 rounded-xl border border-white/10 bg-white/5 p-4 backdrop-blur-sm transition-colors hover:border-white/20 hover:bg-white/[0.07]"
+                >
+                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-accent/15 text-accent">
+                    <Icon className="text-lg" />
+                  </div>
+                  <div className="min-w-0 text-left">
+                    <p className="mb-0.5 text-xs uppercase tracking-wide text-white/40">
+                      {label}
+                    </p>
+                    {href ? (
+                      <a
+                        href={href}
+                        className="break-all text-sm font-medium text-white transition-colors hover:text-accent"
+                      >
+                        {value}
+                      </a>
+                    ) : (
+                      <p className="text-sm font-medium text-white">{value}</p>
+                    )}
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            <div className="flex flex-col items-center gap-3 xl:items-start">
+              <p className="mb-0 text-sm text-white/50">Find me on</p>
+              <Socials />
+            </div>
+          </motion.div>
+
+          <motion.div
             variants={fadeIn("up", 0.4)}
             initial="hidden"
             animate="show"
             exit="hidden"
-            className="flex flex-1 flex-col gap-6 w-full mx-auto"
-            onSubmit={handleSubmit}
+            className="rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur-sm sm:p-8"
           >
-            <div className="flex w-full gap-x-6">
-              <div className="w-full">
-                <input
-                  type="text"
-                  placeholder="Your Name"
-                  className="input"
-                  value={formData.name.value}
-                  onChange={(e) => handleChange("name", e.target.value)}
-                />
-                {formData.name.error && (
-                  <p className="text-red-500 text-xs mt-1">
-                    {formData.name.error}
-                  </p>
-                )}
-              </div>
-              <div className="w-full">
-                <input
-                  type="email"
-                  placeholder="Your email address"
-                  className="input"
-                  value={formData.email.value}
-                  onChange={(e) => handleChange("email", e.target.value)}
-                />
-                {formData.email.error && (
-                  <p className="text-red-500 text-xs mt-1">
-                    {formData.email.error}
-                  </p>
-                )}
-              </div>
-            </div>
-            <div>
-              <textarea
-                placeholder="Your Message"
-                rows={5}
-                className="textarea"
-                value={formData.message.value}
-                onChange={(e) => handleChange("message", e.target.value)}
-              />
-              {formData.message.error && (
-                <p className="text-red-500 text-xs mt-1">
-                  {formData.message.error}
-                </p>
-              )}
-            </div>
-            <button
-              className={`btn rounded-full border border-white/50 max-w-[170px] py-8 transition-all duration-300 flex items-center justify-center overflow-hidden hover:border-accent group ${
-                loading ? "opacity-50 cursor-not-allowed" : ""
-              }`}
-              type="submit"
-              disabled={loading}
-              onClick={(e) => {
-                if (!validateForm(formData)) {
-                  e.preventDefault();
-                  setErrorMessage("Please fill all fields correctly.");
-                }
-              }}
-            >
-              {loading ? "Sending..." : "Submit"}
-            </button>
-            {successMessage && (
-              <p className="text-green-500 text-sm mt-2">{successMessage}</p>
-            )}
-            {errorMessage && (
-              <p className="text-red-500 text-sm mt-2">{errorMessage}</p>
-            )}
-          </motion.form>
+            <h3 className="mb-1 text-lg font-semibold text-white">Send a message</h3>
+            <p className="mb-6 text-sm text-white/50">
+              Fill out the form below and I&apos;ll reply within 24 hours.
+            </p>
+            <ContactForm />
+          </motion.div>
         </div>
       </div>
     </div>
