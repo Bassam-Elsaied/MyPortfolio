@@ -323,23 +323,32 @@ export const workSlides = {
 };
 
 export const projects = [
+  // {
+  //   id: 1,
+  //   title: "Coffe Bar",
+  //   description:
+  //     "Interactive showcase of modern web animation libraries and frameworks",
+  //   tech: ["Next", "GSAP", "Tailwind"],
+  //   image: "/images/coffee-menu-green.vercel.app.png",
+  //   URL: "https://coffee-menu-green.vercel.app/",
+  // },
+  // {
+  //   id: 7,
+  //   title: "3d Portfolio",
+  //   description:
+  //     "A sleek, space-themed personal website designed to showcase the creative and technical journey ",
+  //   tech: ["React", "Tailwind", "shadcn-ui", "TypeScript", "GSAP"],
+  //   image: "/images/bassam-cosmic-portfolio.vercel.app.png",
+  //   URL: "https://bassam-cosmic-portfolio.vercel.app/",
+  // },
   {
     id: 1,
-    title: "Coffe Bar",
+    title: "Life post",
     description:
-      "Interactive showcase of modern web animation libraries and frameworks",
-    tech: ["Next", "GSAP", "Tailwind"],
-    image: "/images/coffee-menu-green.vercel.app.png",
-    URL: "https://coffee-menu-green.vercel.app/",
-  },
-  {
-    id: 7,
-    title: "3d Portfolio",
-    description:
-      "A sleek, space-themed personal website designed to showcase the creative and technical journey ",
-    tech: ["React", "Tailwind", "shadcn-ui", "TypeScript", "GSAP"],
-    image: "/images/bassam-cosmic-portfolio.vercel.app.png",
-    URL: "https://bassam-cosmic-portfolio.vercel.app/",
+      "A wep that you can signin and see , share your posts with the world.",
+    tech: ["Next.js", "React", "Tailwindcss", "Sanity", "Shadcn"],
+    image: "/images/life-post.vercel.app.png",
+    URL: "https://life-post.vercel.app/",
   },
   {
     id: 2,
@@ -359,15 +368,6 @@ export const projects = [
     URL: "https://zentry-clone-six-tau.vercel.app/",
   },
 
-  {
-    id: 5,
-    title: "Life post",
-    description:
-      "A wep that you can signin and see , share your posts with the world.",
-    tech: ["Next.js", "React", "Tailwindcss", "Sanity", "Shadcn"],
-    image: "/images/life-post.vercel.app.png",
-    URL: "https://life-post.vercel.app/",
-  },
   {
     id: 6,
     title: "Pokemon Card ",
