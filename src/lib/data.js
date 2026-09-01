@@ -244,7 +244,7 @@ export const featuredProjects = [
     description:
       "A complete digital menu platform for restaurants and cafes. Customers scan a QR code to browse an interactive menu, while restaurant owners manage categories, products, prices, and analytics from a powerful dashboard. Includes a React Native staff app for real-time order handling from receipt to delivery.",
     tech: ["Next.js", "Node.js", "React Native", "Express", "SQL Server"],
-    video: "/video/EnsMenu.mp4",
+    image: "/images/ensmenu.webp",
     URL: "https://www.ensmenu.com/",
     highlight: true,
   },
@@ -256,8 +256,8 @@ export const featuredProjects = [
     description:
       "A full e-commerce platform with product catalog, cart, and checkout flow. Built with Next.js on the front end and Node.js on the back end to deliver a smooth, responsive shopping experience.",
     tech: ["Next.js", "Node.js", "Express", "SQL Server "],
-    video: "/video/LapipStore.mp4",
-    URL: "https://lapip.net/ar",
+    image: "/images/lapip.webp",
+    URL: "https://lapip.net",
     highlight: false,
   },
   {
@@ -268,7 +268,7 @@ export const featuredProjects = [
     description:
       "A modern static e-commerce storefront built entirely with Next.js. Focused on clean product presentation, strong brand identity, and fast performance without a custom back end.",
     tech: ["Next.js", "Tailwind CSS", "TypeScript"],
-    video: "/video/morshed.mp4",
+    image: "/images/morsh-D.webp",
     URL: "https://morsh-d.com/",
     highlight: false,
   },

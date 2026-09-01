@@ -1,46 +1,10 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { BsArrowRight, BsStarFill } from "react-icons/bs";
 import { fadeIn } from "@/lib/variants";
 import { featuredProjects } from "@/lib/data";
-
-function ProjectVideo({ src, title }) {
-  const videoRef = useRef(null);
-
-  useEffect(() => {
-    const video = videoRef.current;
-    if (!video) return;
-
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          video.play().catch(() => {});
-        } else {
-          video.pause();
-        }
-      },
-      { threshold: 0.25 }
-    );
-
-    observer.observe(video);
-    return () => observer.disconnect();
-  }, []);
-
-  return (
-    <video
-      ref={videoRef}
-      src={src}
-      muted
-      loop
-      playsInline
-      preload="metadata"
-      aria-label={`${title} project preview`}
-      className="h-full w-full object-contain"
-    />
-  );
-}
 
 function FeaturedCard({ project, featured = false }) {
   return (
@@ -56,7 +20,17 @@ function FeaturedCard({ project, featured = false }) {
           featured ? "aspect-video lg:aspect-auto lg:min-h-[280px]" : "aspect-video"
         }`}
       >
-        <ProjectVideo src={project.video} title={project.title} />
+        <Image
+          src={project.image}
+          alt={`${project.title} project preview`}
+          fill
+          sizes={
+            featured
+              ? "(max-width: 1024px) 100vw, 50vw"
+              : "(max-width: 1024px) 100vw, 50vw"
+          }
+          className="object-cover transition-transform duration-500 group-hover:scale-105"
+        />
         <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-primary/80 via-transparent to-transparent" />
 
         <div className="absolute top-3 left-3 flex flex-wrap gap-2">
