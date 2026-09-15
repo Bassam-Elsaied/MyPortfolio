@@ -261,15 +261,15 @@ export const featuredProjects = [
     highlight: false,
   },
   {
-    id: "morsh-d",
-    title: "Morsh-D",
-    badge: "E-Commerce",
-    type: "Static",
+    id: "topaz",
+    title: "Topaz Events",
+    badge: "Client Project",
+    type: "Front-End",
     description:
-      "A modern static e-commerce storefront built entirely with Next.js. Focused on clean product presentation, strong brand identity, and fast performance without a custom back end.",
-    tech: ["Next.js", "Tailwind CSS", "TypeScript"],
-    image: "/images/morsh-D.webp",
-    URL: "https://morsh-d.com/",
+      "A full marketing site for a leading UAE event management company — portfolio, services, AV solutions, and a multi-step enquiry flow across Sharjah, Dubai, and Abu Dhabi.",
+    tech: ["Next.js", "Tailwind CSS", "TypeScript", "Framer Motion"],
+    image: "/images/topazuae.com.png",
+    URL: "https://topazuae.com/",
     highlight: false,
   },
 ];
@@ -323,24 +323,6 @@ export const workSlides = {
 };
 
 export const projects = [
-  // {
-  //   id: 1,
-  //   title: "Coffe Bar",
-  //   description:
-  //     "Interactive showcase of modern web animation libraries and frameworks",
-  //   tech: ["Next", "GSAP", "Tailwind"],
-  //   image: "/images/coffee-menu-green.vercel.app.png",
-  //   URL: "https://coffee-menu-green.vercel.app/",
-  // },
-  // {
-  //   id: 7,
-  //   title: "3d Portfolio",
-  //   description:
-  //     "A sleek, space-themed personal website designed to showcase the creative and technical journey ",
-  //   tech: ["React", "Tailwind", "shadcn-ui", "TypeScript", "GSAP"],
-  //   image: "/images/bassam-cosmic-portfolio.vercel.app.png",
-  //   URL: "https://bassam-cosmic-portfolio.vercel.app/",
-  // },
   {
     id: 1,
     title: "Life post",
@@ -352,30 +334,31 @@ export const projects = [
   },
   {
     id: 2,
-    title: "X-future",
+    title: "Bassam Portfolio",
     description:
-      "Practice for E-commerce website that provides product you can buy and pay",
-    tech: ["Next", "Tailwind", "Sanity", "Stripe", "ShadCn"],
-    image: "/images/x-future-ecommerce.vercel.app.png",
-    URL: "https://x-future-ecommerce.vercel.app/en",
-  },
-  {
-    id: 3,
-    title: "Zenty clone",
-    description: "Modern wep animated with gsap beautiful UI",
-    tech: ["React", "Tailwindcss", "GSAP"],
-    image: "/images/zentry-clone-six-tau.vercel.app.png",
-    URL: "https://zentry-clone-six-tau.vercel.app/",
+      "Personal portfolio site — selected work, services, and contact with a cinematic intro and motion-led layout.",
+    tech: ["Next.js", "React", "Tailwind CSS", "Framer Motion"],
+    image: "/images/bassam-bay.vercel.app.png",
+    URL: "https://bassam-bay.vercel.app/",
   },
 
   {
-    id: 6,
-    title: "Pokemon Card ",
+    id: 4,
+    title: "KOGNS",
     description:
-      "A simple and interactive website that displays custom Pokémon cards with images, types, and stats. Built using HTML, CSS, and JavaScript. ",
-    tech: ["HTML", "Css", "Js"],
-    image: "/images/bassam-elsaied.github.io.png",
-    URL: "https://bassam-elsaied.github.io/Pokemon-Cards/index.html",
+      "Engineering and intelligence brand site with a bilingual experience and a focused product narrative.",
+    tech: ["Next.js", "React", "Tailwind CSS"],
+    image: "/images/kogns.com.png",
+    URL: "https://kogns.com/en",
+  },
+  {
+    id: 5,
+    title: "Morsh-D",
+    description:
+      "A modern static e-commerce storefront built entirely with Next.js. Focused on clean product presentation, strong brand identity, and fast performance without a custom back end.",
+    tech: ["Next.js", "Tailwind CSS", "TypeScript"],
+    image: "/images/morsh-D.webp",
+    URL: "https://morsh-d.com/",
   },
 ];
 
