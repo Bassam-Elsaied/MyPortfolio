@@ -345,15 +345,15 @@ export const projects = [
     URL: "https://bassam-bay.vercel.app/",
   },
 
-  {
-    id: 4,
-    title: "KOGNS",
-    description:
-      "Engineering and intelligence brand site with a bilingual experience and a focused product narrative.",
-    tech: ["Next.js", "React", "Tailwind CSS"],
-    image: "/images/kogns.com.png",
-    URL: "https://kogns.com/en",
-  },
+  // {
+  //   id: 4,
+  //   title: "KOGNS",
+  //   description:
+  //     "Engineering and intelligence brand site with a bilingual experience and a focused product narrative.",
+  //   tech: ["Next.js", "React", "Tailwind CSS"],
+  //   image: "/images/kogns.com.png",
+  //   URL: "https://kogns.com/en",
+  // },
   {
     id: 5,
     title: "Morsh-D",
