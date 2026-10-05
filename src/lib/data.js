@@ -197,7 +197,7 @@ export const aboutData = [
         infos: [
           "Started at ENS as a Junior Front-End Developer, building responsive and accessible user interfaces with React and Next.js.",
           "Promoted to Full-Stack Developer — developing REST APIs with Node.js and Express, and working with SQL Server, MongoDB, and Supabase.",
-          "Currently Team Leader, leading the development team and overseeing company web applications including ENSmenu.",
+          "Currently Team Leader, leading the development team and overseeing company web applications including ENSmenu, Lapip Store, and Topaz Events.",
         ],
       },
       {
@@ -239,6 +239,7 @@ export const featuredProjects = [
   {
     id: "ensmenu",
     title: "ENSmenu",
+    company: "ENS",
     badge: "Main Project",
     type: "Full-Stack",
     description:
@@ -251,6 +252,7 @@ export const featuredProjects = [
   {
     id: "lapipstore",
     title: "Lapip Store",
+    company: "ENS",
     badge: "E-Commerce",
     type: "Full-Stack",
     description:
@@ -263,6 +265,7 @@ export const featuredProjects = [
   {
     id: "topaz",
     title: "Topaz Events",
+    company: "ENS",
     badge: "Client Project",
     type: "Front-End",
     description:

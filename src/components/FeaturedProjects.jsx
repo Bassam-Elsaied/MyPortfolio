@@ -48,9 +48,16 @@ function FeaturedCard({ project, featured = false }) {
 
       <div className="flex flex-1 flex-col justify-center p-4 sm:p-6">
         <div className="mb-2 flex items-start justify-between gap-3">
-          <h3 className="text-lg font-bold text-white transition-colors group-hover:text-accent sm:text-xl">
-            {project.title}
-          </h3>
+          <div>
+            <h3 className="text-lg font-bold text-white transition-colors group-hover:text-accent sm:text-xl">
+              {project.title}
+            </h3>
+            {project.company && (
+              <p className="mt-1 text-xs font-medium tracking-wide text-accent">
+                {project.company}
+              </p>
+            )}
+          </div>
           {!featured && (
             <span className="shrink-0 rounded-full bg-accent/15 px-2.5 py-1 text-xs font-medium text-accent">
               {project.badge}
